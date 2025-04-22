@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matt Dyer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Mobile header -->
+        <header class="mobile-header">
+            <div class="nav-top">
+                <span class="back-button">Done</span>
+                <span class="domain">mattdyer.xyz</span>
+                <div class="nav-icons">
+                    <span class="menu-icon"></span>
+                    <span class="refresh-icon"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Left sidebar with name and navigation (visible on desktop) -->
+        <div class="main-header">
+            <h1>Matt Dyer</h1>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Main content area -->
+        <main id="about" class="active-section">
+            <div class="profile-container">
+                <img src="profile-pic.png" alt="Matt Dyer Profile Picture" class="profile-pic">
+            </div>
+            
+            <div class="bio-content">
+                <p>
+                    <span class="emoji">👋🏼</span> Currently diving into coding, reconnecting with nature, and plotting my next adventure. Former CEO of <a href="https://www.zilliqa.com/" class="text-link">Zilliqa</a>, where I spearheaded key initiatives.
+                </p>
+                <p>
+                    My journey began at <a href="https://sabiogroup.com/" class="text-link">Sabio</a>, leading consultancy and driving business growth across Southeast Asia.
+                </p>
+                <p>
+                    Connect with me at <a href="http://mattdyer.xyz/" class="text-link">Matt.xyz</a> (ETH), <a href="https://twitter.com/mattdyer" class="text-link">Twitter</a>, or <a href="https://linkedin.com/in/mattddyer" class="text-link">LinkedIn</a>.
+                </p>
+            </div>
+        </main>
+        
+        <!-- Mobile footer -->
+        <footer class="mobile-footer">
+            <div class="footer-buttons">
+                <div class="footer-btn back-btn"></div>
+                <div class="footer-btn forward-btn"></div>
+                <div class="footer-btn share-btn"></div>
+                <div class="footer-btn tools-btn"></div>
+            </div>
+            <div class="footer-indicator"></div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the target section id from the href
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.active-section').forEach(section => {
+                        section.classList.remove('active-section');
+                        section.classList.add('hidden-section');
+                    });
+                    
+                    // Show the target section
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.classList.remove('hidden-section');
+                    targetSection.classList.add('active-section');
+                    
+                    // Update active nav item
+                    document.querySelectorAll('nav ul li').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    this.parentElement.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
